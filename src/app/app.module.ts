@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
-import { NgxLinkPreviewModule } from 'ngx-link-preview.module';
+import { NgxLinkPreviewModule } from 'ngx-link-preview';
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, NgxLinkPreviewModule ],
   declarations: [ AppComponent, HelloComponent ],
