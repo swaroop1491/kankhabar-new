@@ -1,0 +1,18 @@
+p {
+  font-family: Lato;
+}
+.topic-list, .fav-topic-list{
+  display: flex;
+  overflow-x: scroll;
+}
+.topic-list > div, .fav-topic-list > div{
+  width:auto;
+  padding: 10px;
+  background: pink;
+  margin:5px;
+  white-space: nowrap;
+}
+.active{
+  background: black !important;
+  color: white;
+}
