@@ -19,7 +19,7 @@ export class AppComponent  {
       this.topicData = resp;
     });
   }
-  public apiCallbackFn = route => {
+  public apiCallbackFn = (route: string) => {
       return this.http.get(route).pipe(delay(2500));
    };
   arr: any = [
