@@ -18,16 +18,10 @@ export class AppComponent  {
     this.http.get("https://kkapi.swaroop1491.repl.co/news/India+Trending").subscribe(resp=>{
       this.topicData = resp;
     });
-    this.getPreview();
   }
-  getPreview(){
-    this.http.get("https://www.moneycontrol.com/news/india/lottery-sambad-result-september-22-dear-bangalakshmi-torsha-lottery-result-to-be-announced-today-at-4-pm-5869001.html", {responseType: 'text'}).subscribe(resp=>{
-      this.html = resp;
-      // let parser = new DOMParser();
-      // let parsedHtml = ( new window.DOMParser() ).parseFromString(resp, "text/xml");
-      // console.log(parsedHtml)
-    })
-  }
+  public apiCallbackFn = route => {
+      return this.http.get(route).pipe(delay(2500));
+   };
   arr: any = [
     {"topic": "Trending", "active":true},
     {"topic": "My Fav", "active":false},
