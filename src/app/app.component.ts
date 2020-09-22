@@ -12,7 +12,7 @@ export class AppComponent  {
   favValue = "";
   favList = [];
   topicData: any = [];
-  html = "";
+  html: any = "";
   ngOnInit(){
     this.favList = JSON.parse(localStorage.getItem("favList"));
     this.http.get("https://kkapi.swaroop1491.repl.co/news/India+Trending").subscribe(resp=>{
@@ -21,11 +21,11 @@ export class AppComponent  {
     this.getPreview();
   }
   getPreview(){
-    this.http.get("https://www.moneycontrol.com/news/india/lottery-sambad-result-september-22-dear-bangalakshmi-torsha-lottery-result-to-be-announced-today-at-4-pm-5869001.html", { responseType: 'text' }).subscribe(resp=>{
+    this.http.get("https://www.moneycontrol.com/news/india/lottery-sambad-result-september-22-dear-bangalakshmi-torsha-lottery-result-to-be-announced-today-at-4-pm-5869001.html", {responseType: 'text'}).subscribe(resp=>{
       this.html = resp;
-      var parser = new DOMParser();
-	    var doc = parser.parseFromString(this.html, 'text/html');
-      console.log(doc)
+      // let parser = new DOMParser();
+      // let parsedHtml = ( new window.DOMParser() ).parseFromString(resp, "text/xml");
+      // console.log(parsedHtml)
     })
   }
   arr: any = [
@@ -48,9 +48,10 @@ export class AppComponent  {
     for(let i=0;i<this.arr.length;i++){
       if(this.arr[i].topic == e.topic) this.arr[i].active = true;
       else  this.arr[i].active = false;
-    }
-    ;
-    
+    };
+    this.http.get("https://kkapi.swaroop1491.repl.co/news/"+e.topic).subscribe(resp=>{
+      this.topicData = resp;
+    });
   }
   favtopicClk(e){
 
