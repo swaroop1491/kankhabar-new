@@ -4,9 +4,6 @@
 <div class="topic-list">
 	<div *ngFor="let a of arr" [ngClass]="{active: a.active}" (click)="topicClk(a)">{{ a.topic }}</div>
 </div>
-<ngx-link-preview apiRoute="https://youtube.com" [links]="https://youtube.com"
-	[getApiEndpoint$]="apiCallbackFn">
-</ngx-link-preview>
 <div *ngIf="currentSelection == 'My Fav'">
 	<input type="text" [(ngModel)]="favValue"/>
 	<button (click)="addFav()">Add</button>
