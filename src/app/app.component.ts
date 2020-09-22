@@ -12,11 +12,21 @@ export class AppComponent  {
   favValue = "";
   favList = [];
   topicData: any = [];
+  html = "";
   ngOnInit(){
     this.favList = JSON.parse(localStorage.getItem("favList"));
     this.http.get("https://kkapi.swaroop1491.repl.co/news/India+Trending").subscribe(resp=>{
       this.topicData = resp;
     });
+    this.getPreview();
+  }
+  getPreview(){
+    this.http.get("https://www.moneycontrol.com/news/india/lottery-sambad-result-september-22-dear-bangalakshmi-torsha-lottery-result-to-be-announced-today-at-4-pm-5869001.html", { responseType: 'text' }).subscribe(resp=>{
+      this.html = resp;
+      var parser = new DOMParser();
+	    var doc = parser.parseFromString(this.html, 'text/html');
+      console.log(doc)
+    })
   }
   arr: any = [
     {"topic": "Trending", "active":true},
