@@ -10,10 +10,11 @@ export class AppComponent {
   name = "Angular " + VERSION.major;
   currentSelection = "Trending";
   favValue = "";
-  favList = [];
+  favList: any = [];
   topicData: any = [];
   html: any = "";
   ngOnInit() {
+    this.favList = [];
     this.favList = JSON.parse(localStorage.getItem("favList"));
     this.http
       .get("https://kkapi.swaroop1491.repl.co/news/India+Trending")
@@ -40,10 +41,19 @@ export class AppComponent {
         this.topicData = resp;
       });
   }
-  favtopicClk(e) {}
+  favtopicClk(e) {
+    this.http
+      .get("https://kkapi.swaroop1491.repl.co/news/" + e)
+      .subscribe(resp => {
+        this.topicData = resp;
+      });
+  }
   addFav() {
     if (!this.favValue) alert("Please type some topic name");
-    else this.favList.push(this.favValue);
+    else {
+      console.log(this.favValue);
+      this.favList.push(this.favValue);
+      }
     localStorage.setItem("favList", JSON.stringify(this.favList));
     this.favValue = "";
   }

@@ -1,6 +1,3 @@
-<header>
-	<h1>Kankhabar-Beta</h1>
-</header>
 <div class="topic-list">
 	<div *ngFor="let a of arr" [ngClass]="{active: a.active}" (click)="topicClk(a)">{{ a.topic }}</div>
 </div>
@@ -17,6 +14,6 @@
 <ul>
 	<li *ngFor="let a of topicData">
 		<div>{{a.description}}</div>
-    <div>{{a.link}}</div>
+    <!-- <div>{{a.link}}</div> -->
 	</li>
 </ul>
