@@ -39,6 +39,9 @@ export class AppComponent {
       .get("https://kkapi.swaroop1491.repl.co/news/" + e.topic)
       .subscribe(resp => {
         this.topicData = resp;
+        this.topicData.sort((a, b) => {
+          return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+        });
       });
   }
   favtopicClk(e) {
@@ -46,6 +49,9 @@ export class AppComponent {
       .get("https://kkapi.swaroop1491.repl.co/news/" + e)
       .subscribe(resp => {
         this.topicData = resp;
+        this.topicData.sort((a, b) => {
+          return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+        });
       });
   }
   addFav() {
@@ -53,7 +59,7 @@ export class AppComponent {
     else {
       console.log(this.favValue);
       this.favList.push(this.favValue);
-      }
+    }
     localStorage.setItem("favList", JSON.stringify(this.favList));
     this.favValue = "";
   }

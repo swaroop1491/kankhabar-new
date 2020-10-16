@@ -14,6 +14,7 @@
 <ul>
 	<li *ngFor="let a of topicData">
 		<div>{{a.description}}</div>
-    <!-- <div>{{a.link}}</div> -->
+    <p>{{a.pubDate}}</p>
+    <a [href]='a.link'>Click For Details</a>
 	</li>
 </ul>
